@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      selectWithIndex = () => {
+        index = document.form44.text.value;
+        document.form44.selectbox.selectedIndex = index;
+      };
+    </script>
+  </head>
+  <body>
+    <form class="wrapper" name="form44" action="">
+      <div>Nhập 1 số từ 0 đến 3, sau đó click vào button.</div>
+      <select name="selectbox" id="">
+        <option value="0">Index 0</option>
+        <option value="1">Index 1</option>
+        <option value="2">Index 2</option>
+        <option value="3">Index 3</option>
+      </select>
+      <input type="text" name="text" id="" />
+      <input type="button" value="Click here" onclick="selectWithIndex()" />
+    </form>
+  </body>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 560px;
+    }
+
+    div {
+      margin-bottom: 10px;
+    }
+  </style>
+</html>

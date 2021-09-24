@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Define a function which will work as a method
+        function addPrice(amount) {
+            with(this) {
+                price = amount
+            }
+        }
+
+        function Book(title, author, content) {
+            this.title = title,
+            this.author = author,
+            this.content = content,
+            this.price = 0,
+            this.addPrice = addPrice
+        }
+    </script>
+</head>
+<body>
+    <script>
+        var myBook = new Book("Java", "Sun", "OOP")
+        myBook.addPrice(500)
+        document.write("Book title is: " + myBook.title + "<br>")
+        document.write("Book author is: " + myBook.author + "<br>")
+        document.write("Book content is: " + myBook.content + "<br>")
+        document.write("Book price is: " + myBook.price + "<br>")
+    </script>
+</body>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 560px;
+        font-size: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
+</html>

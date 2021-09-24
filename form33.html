@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      changeText = () => {
+        var input = document.form33.text1.value;
+        var output = "";
+        for (var i = 0; i < input.length; i++) {
+          if (input.charCodeAt(i) < 97) {
+            output += input.charAt(i).toLowerCase();
+          } else {
+            output += input.charAt(i).toUpperCase();
+          }
+        }
+        document.form33.text2.value = output;
+      };
+    </script>
+  </head>
+  <body onload="document.form33.text1.focus()">
+    <form class="wrapper" name="form33">
+      <div>Nhập liệu tại đây:</div>
+      <input type="text" name="text1" id="" onblur="changeText()" />
+      <div>
+        Văn bản sẽ được đổi sang chữ vừa hoa vừa thường hiển thị tại đây:
+      </div>
+      <input type="text" name="text2" id="" />
+    </form>
+  </body>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 560px;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      margin: 10px 0;
+      width: 300px;
+    }
+  </style>
+</html>

@@ -1,45 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        // Define a function which will work as a method
-        function addPrice(amount) {
-            with(this) {
-                price = amount
-            }
+      // Define a function which will work as a method
+      function addPrice(amount) {
+        with (this) {
+          price = amount;
         }
+      }
 
-        function Book(title, author, content) {
-            this.title = title,
-            this.author = author,
-            this.content = content,
-            this.price = 0,
-            this.addPrice = addPrice
-        }
+      function saveNewProperty(key, value) {
+          writeBook();
+          document.write("Book " + key + " is: " + value + "<br>");
+          return value
+      }
+
+      function Book(title, author, content) {
+        this.title = title;
+          this.author = author;
+          this.content = content;
+          this.price = 0;
+          this.addPrice = addPrice;
+          this.newProperty = "";
+          this.addNewProperty = saveNewProperty;
+      }
+
+      function writeBook() {
+        var myBook = new Book("Java", "Sun", "OOP");
+        myBook.addPrice(500);
+        document.write("Book title is: " + myBook.title + "<br>");
+        document.write("Book author is: " + myBook.author + "<br>");
+        document.write("Book content is: " + myBook.content + "<br>");
+        document.write("Book price is: " + myBook.price + "<br>");
+      }
+
+      
     </script>
-</head>
-<body>
+  </head>
+  <body>
+    <form name="form22" action="">
+      <label for="">Nhập tên thuộc tính:</label>
+      <input type="text" name="keyInput" id="" />
+      <label for="">Nhập giá trị của thuộc tính đó:</label>
+      <input type="text" name="valueInput" id="" />
+      <input
+        class="save-button"
+        type="button"
+        value="Lưu"
+        onclick="saveNewProperty(document.form22.keyInput.value, document.form22.valueInput.value)"
+      />
+    </form>
     <script>
-        var myBook = new Book("Java", "Sun", "OOP")
-        myBook.addPrice(500)
-        document.write("Book title is: " + myBook.title + "<br>")
-        document.write("Book author is: " + myBook.author + "<br>")
-        document.write("Book content is: " + myBook.content + "<br>")
-        document.write("Book price is: " + myBook.price + "<br>")
+      writeBook();
     </script>
-</body>
-<style>
+  </body>
+  <style>
     body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 560px;
-        font-size: 30px;
-        font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 560px;
+      font-family: Arial, Helvetica, sans-serif;
     }
-</style>
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      margin: 5px 0;
+    }
+
+    .save-button {
+      width: 100px;
+    }
+  </style>
 </html>

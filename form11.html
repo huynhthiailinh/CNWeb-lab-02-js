@@ -5,24 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script>
+      const validate = () => {
+        if (
+          document.form11.username.value == "" ||
+          document.form11.username.value == null
+        ) {
+          document.getElementById("username-error").classList.remove("hidden");
+        } else if (
+          document.form11.password.value == "" ||
+          document.form11.password.value == null
+        ) {
+          document.getElementById("password-error").classList.remove("hidden");
+        } else {
+          document.getElementById("login-form").classList.add("hidden");
+          document.getElementById("success-message").classList.remove("hidden");
+        }
+      };
+
+      const reset = () => {
+        document.form11.username.value = "";
+        document.form11.password.value = "";
+      };
+    </script>
   </head>
   <body>
     <div id="login">
-      <div class="container">
+      <form id="login-form" name="form11" class="container">
         <div class="title">Login</div>
         <div class="input">
           <div class="label">Username</div>
-          <input class="text-input" type="text" name="" id="" />
+          <input class="text-input" type="text" name="username" id="" />
+        </div>
+        <div id="username-error" class="error-message hidden">
+          You must specify username
         </div>
         <div class="input">
           <div class="label">Password</div>
-          <input class="text-input" type="text" name="" id="" />
+          <input class="text-input" type="text" name="password" id="" />
         </div>
+        <div id="password-error" class="error-message hidden">You must specify password</div>
         <div class="button">
-          <input class="left-button button-item" type="button" value="OK" />
-          <input class="right-button button-item" type="button" value="Reset" />
+          <input
+            class="left-button button-item"
+            name="ok"
+            type="button"
+            value="OK"
+            onclick="validate()"
+          />
+          <input
+            class="right-button button-item"
+            name="reset"
+            type="button"
+            value="Reset"
+            onclick="reset()"
+          />
         </div>
-      </div>
+      </form>
+      <div id="success-message" class="hidden">Login success!</div>
     </div>
   </body>
   <style>
@@ -53,11 +93,15 @@
     #login .input {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 10px;
+      margin-top: 10px;
     }
 
     #login .text-input {
       border-radius: 4px;
+    }
+
+    #login .error-message {
+      color: red;
     }
 
     #login .button {
@@ -92,6 +136,10 @@
 
     #login .right-button {
       margin-left: 10px;
+    }
+
+    #login .hidden {
+      display: none;
     }
   </style>
 </html>
